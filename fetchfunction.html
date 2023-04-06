@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div id="wrapper"></div>
+  <p></p>
+
+
+    <script>
+
+        //fetch takes url or 
+
+    fetch("https://randomuser.me/api")
+    .then((response)=>{
+        return response.json();
+    })
+    .then((result) =>{
+        console.log(result);
+    showResultOnScreen(result);
+});
+
+
+function showResultOnScreen(data)
+{
+    const image = document.createElement('img');
+    image.src = data.results[0].picture.large;
+
+   
+
+  const name = document.createElement("h1");
+  name.innerHTML =
+   data.results[0].name.first +data.results[0].name.last;
+
+  const email = document.createElement('p');
+  email.innerHTML = data.results[0].email;
+
+  const gender = document.createElement('p');
+  gender.innerHTML = data.results[0].gender;
+
+
+  const street = document.createElement('p');
+  street.innerHTML = data.results[0].location.street.number;
+
+  document.querySelector("#wrapper").append(image);
+  document.querySelector('#wrapper').append(name);
+  document.querySelector('#wrapper').append(email);
+  document.querySelector('#wrapper').append(gender);
+  document.querySelector('#wrapper').append(street);
+
+}
+
+//    // https://dummyjson.com//products
+
+
+
+
+
+// //    fetch('https://dummyjson.com//products')
+// //    .then((response)=>{return response.json()})
+// //    .then()
+    
+    </script>
+    
+</body>
+</html>
